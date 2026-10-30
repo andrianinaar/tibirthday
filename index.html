@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1A0A2E">
+    <title>💝 Pour toi, Iloniaina</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ÉCRAN DE CHARGEMENT                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="loader" class="loader">
+        <div class="loader-heart">💜</div>
+        <p class="loader-text">Préparation de ta surprise...</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ÉCRAN D'ACCUEIL                             -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="welcome-screen" class="welcome-screen hidden">
+        <canvas id="stars-canvas"></canvas>
+        <div class="welcome-content">
+            <div class="envelope" id="envelope">
+                <div class="envelope-top"></div>
+                <div class="envelope-body">
+                    <div class="envelope-heart">💝</div>
+                </div>
+            </div>
+            <p class="welcome-text">J'ai quelque chose pour toi...</p>
+            <button class="open-btn" id="open-btn">
+                <span>Ouvre-moi 💝</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- COMPTE À REBOURS                           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="countdown-screen" class="countdown-screen hidden">
+        <div class="countdown-number" id="countdown-number"></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CONTENU PRINCIPAL (SCROLL)                  -->
+    <!-- ═══════════════════════════════════════════ -->
+    <main id="main-content" class="main-content hidden">
+
+        <!-- Canvas confettis (plein écran, fixe) -->
+        <canvas id="confetti-canvas"></canvas>
+
+        <!-- Bouton musique (fixe, haut droit) -->
+        <button class="music-btn" id="music-btn" aria-label="Couper/remettre la musique">
+            <span class="music-icon" id="music-icon">🎵</span>
+        </button>
+
+        <!-- ─── Section 1 : Révélation ─── -->
+        <section class="section section-reveal" id="section-reveal">
+            <div class="falling-petals" id="falling-petals"></div>
+            <div class="floating-hearts" id="floating-hearts"></div>
+            <div class="reveal-content animate-on-scroll">
+                <h1 class="reveal-title">Joyeux Anniversaire</h1>
+                <h2 class="reveal-name" id="reveal-name">Iloniaina</h2>
+                <div class="reveal-cake">🎂</div>
+                <p class="reveal-date" id="reveal-date">17 Novembre</p>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- ─── Section 2 : Souffler les bougies ─── -->
+        <section class="section section-candles" id="section-candles">
+            <div class="candles-content animate-on-scroll">
+                <p class="candles-instruction" id="candles-instruction">Tape sur le gâteau pour souffler tes bougies 🕯️</p>
+                <div class="candles-cake" id="candles-cake">
+                    <div class="candles-row" id="candles-row">
+                        <span class="candle-flame">🕯</span>
+                        <span class="candle-flame">🕯</span>
+                        <span class="candle-flame">🕯</span>
+                        <span class="candle-flame">🕯</span>
+                        <span class="candle-flame">🕯</span>
+                    </div>
+                    <div class="cake-big">🎂</div>
+                </div>
+                <p class="candles-wish hidden" id="candles-wish">Ton vœu va se réaliser... ✨</p>
+            </div>
+            <!-- Canvas pour les feux d'artifice -->
+            <canvas id="fireworks-canvas"></canvas>
+        </section>
+
+        <!-- ─── Section 3 : Compteur de jours ─── -->
+        <section class="section section-counter" id="section-counter">
+            <div class="counter-content animate-on-scroll">
+                <h2 class="section-title">Notre histoire d'amour</h2>
+                <p class="counter-subtitle">Ensemble depuis le <span id="couple-date-text">7 janvier 2024</span></p>
+                <div class="counter-grid" id="counter-grid">
+                    <div class="counter-card">
+                        <span class="counter-value" id="counter-days">0</span>
+                        <span class="counter-label">Jours</span>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-value" id="counter-hours">0</span>
+                        <span class="counter-label">Heures</span>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-value" id="counter-minutes">0</span>
+                        <span class="counter-label">Minutes</span>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-value" id="counter-seconds">0</span>
+                        <span class="counter-label">Secondes</span>
+                    </div>
+                </div>
+                <p class="counter-footer">...et chaque seconde compte 💜</p>
+            </div>
+        </section>
+
+        <!-- ─── Section 4 : Raisons je t'aime ─── -->
+        <section class="section section-reasons" id="section-reasons">
+            <div class="reasons-content animate-on-scroll">
+                <h2 class="section-title">Pourquoi je t'aime</h2>
+                <p class="reasons-subtitle">Tape sur chaque carte pour découvrir 💜</p>
+                <div class="reasons-grid" id="reasons-grid">
+                    <!-- Générées par JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Section 5 : Diaporama photos ─── -->
+        <section class="section section-photos" id="section-photos">
+            <div class="photos-content animate-on-scroll">
+                <h2 class="section-title">Nos plus beaux moments</h2>
+                <div class="slideshow-container" id="slideshow-container">
+                    <div class="slideshow-track" id="slideshow-track">
+                        <!-- Slides générées par JS -->
+                    </div>
+                    <button class="slide-btn slide-btn-prev" id="slide-prev" aria-label="Photo précédente">❮</button>
+                    <button class="slide-btn slide-btn-next" id="slide-next" aria-label="Photo suivante">❯</button>
+                </div>
+                <div class="slideshow-dots" id="slideshow-dots"></div>
+            </div>
+        </section>
+
+        <!-- ─── Overlay fullscreen photo ─── -->
+        <div class="photo-overlay hidden" id="photo-overlay">
+            <img class="photo-overlay-img" id="photo-overlay-img" src="" alt="Photo plein écran">
+            <button class="photo-overlay-close" id="photo-overlay-close" aria-label="Fermer">✕</button>
+        </div>
+
+        <!-- ─── Section 6 : Message final ─── -->
+        <section class="section section-message" id="section-message">
+            <div class="message-content animate-on-scroll">
+                <div class="message-card">
+                    <h2 class="message-title">Pour toi, mon amour...</h2>
+                    <div class="message-body" id="message-body">
+                        <!-- Le message est tapé par l'effet machine à écrire -->
+                    </div>
+                    <span class="typewriter-cursor" id="typewriter-cursor"></span>
+                    <p class="message-signature hidden" id="message-signature">Avec tout mon amour ❤️</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Section 7 : Rejouer ─── -->
+        <section class="section section-replay" id="section-replay">
+            <div class="replay-content animate-on-scroll">
+                <p class="replay-text">Je t'aime plus que tous les mots de cette page 💜</p>
+                <button class="replay-btn" id="replay-btn">
+                    <span>Revivre la magie ✨</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Audio -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
