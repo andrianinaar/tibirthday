@@ -4,186 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1A0A2E">
-    <title>💝 Pour toi, Iloniaina</title>
-
-    <!-- Google Fonts -->
+    <title>Pour toi, Iloniaina</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- ÉCRAN DE CHARGEMENT                        -->
-    <!-- ═══════════════════════════════════════════ -->
+    <!-- LOADER -->
     <div id="loader" class="loader">
-        <div class="loader-heart">💜</div>
+        <div class="loader-heart-wrap">
+            <svg class="icon-heart loader-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
         <p class="loader-text">Préparation de ta surprise...</p>
     </div>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- ÉCRAN D'ACCUEIL                             -->
-    <!-- ═══════════════════════════════════════════ -->
+    <!-- ACCUEIL -->
     <section id="welcome-screen" class="welcome-screen hidden">
         <canvas id="stars-canvas"></canvas>
         <div class="welcome-content">
-            <div class="envelope" id="envelope">
-                <div class="envelope-top"></div>
-                <div class="envelope-body">
-                    <div class="envelope-heart">💝</div>
-                </div>
+            <div class="envelope-wrap">
+                <svg class="icon-envelope" viewBox="0 0 64 48">
+                    <rect x="2" y="8" width="60" height="38" rx="4" fill="#967BB6" stroke="#B8A9C9" stroke-width="1.5"/>
+                    <polygon points="2,8 32,30 62,8" fill="#7B6899" stroke="#B8A9C9" stroke-width="1"/>
+                    <polygon points="2,46 24,28 2,8" fill="rgba(255,255,255,0.05)"/>
+                    <polygon points="62,46 40,28 62,8" fill="rgba(255,255,255,0.05)"/>
+                </svg>
+                <svg class="envelope-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </div>
             <p class="welcome-text">J'ai quelque chose pour toi...</p>
             <button class="open-btn" id="open-btn">
-                <span>Ouvre-moi 💝</span>
+                <span>Ouvre-moi</span>
+                <svg class="icon-heart btn-heart-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </button>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- COMPTE À REBOURS                           -->
-    <!-- ═══════════════════════════════════════════ -->
+    <!-- COUNTDOWN -->
     <section id="countdown-screen" class="countdown-screen hidden">
         <div class="countdown-number" id="countdown-number"></div>
     </section>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- CONTENU PRINCIPAL (SCROLL)                  -->
-    <!-- ═══════════════════════════════════════════ -->
+    <!-- CONTENU PRINCIPAL -->
     <main id="main-content" class="main-content hidden">
-
-        <!-- Canvas confettis (plein écran, fixe) -->
         <canvas id="confetti-canvas"></canvas>
 
-        <!-- Bouton musique (fixe, haut droit) -->
-        <button class="music-btn" id="music-btn" aria-label="Couper/remettre la musique">
-            <span class="music-icon" id="music-icon">🎵</span>
+        <!-- Bouton musique -->
+        <button class="music-btn" id="music-btn" aria-label="Musique">
+            <svg class="music-icon-on" id="music-icon-on" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            <svg class="music-icon-off hidden" id="music-icon-off" viewBox="0 0 24 24"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/></svg>
         </button>
 
-        <!-- ─── Section 1 : Révélation ─── -->
+        <!-- Section 1 : Révélation -->
         <section class="section section-reveal" id="section-reveal">
             <div class="falling-petals" id="falling-petals"></div>
             <div class="floating-hearts" id="floating-hearts"></div>
             <div class="reveal-content animate-on-scroll">
                 <h1 class="reveal-title">Joyeux Anniversaire</h1>
                 <h2 class="reveal-name" id="reveal-name">Iloniaina</h2>
-                <div class="reveal-cake">🎂</div>
+                <div class="reveal-cake-wrap">
+                    <svg class="icon-cake" viewBox="0 0 80 70">
+                        <!-- Flammes -->
+                        <ellipse cx="25" cy="10" rx="3.5" ry="6" fill="url(#flameGrad)" class="svg-flame f1"/>
+                        <ellipse cx="40" cy="10" rx="3.5" ry="6" fill="url(#flameGrad)" class="svg-flame f2"/>
+                        <ellipse cx="55" cy="10" rx="3.5" ry="6" fill="url(#flameGrad)" class="svg-flame f3"/>
+                        <!-- Bougies -->
+                        <rect x="23.5" y="14" width="3" height="12" rx="1.5" fill="#F0D78C"/>
+                        <rect x="38.5" y="14" width="3" height="12" rx="1.5" fill="#F0D78C"/>
+                        <rect x="53.5" y="14" width="3" height="12" rx="1.5" fill="#F0D78C"/>
+                        <!-- Gâteau -->
+                        <rect x="15" y="26" width="50" height="14" rx="4" fill="#E8A0BF"/>
+                        <rect x="10" y="40" width="60" height="14" rx="4" fill="#B8A9C9"/>
+                        <rect x="5" y="54" width="70" height="14" rx="5" fill="#967BB6"/>
+                        <!-- Décorations -->
+                        <line x1="15" y1="33" x2="65" y2="33" stroke="#F0D78C" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+                        <line x1="10" y1="47" x2="70" y2="47" stroke="#F4C2C2" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+                        <defs>
+                            <radialGradient id="flameGrad" cx="50%" cy="80%" r="50%">
+                                <stop offset="0%" stop-color="#FFF8DC"/>
+                                <stop offset="40%" stop-color="#F0D78C"/>
+                                <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.6"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
                 <p class="reveal-date" id="reveal-date">17 Novembre</p>
             </div>
-            <div class="scroll-indicator">
+            <div class="scroll-indicator" id="scroll-indicator">
                 <span>Scroll</span>
-                <div class="scroll-arrow"></div>
+                <svg class="icon-chevron-down" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
             </div>
         </section>
 
-        <!-- ─── Section 2 : Souffler les bougies ─── -->
+        <!-- Section 2 : Bougies -->
         <section class="section section-candles" id="section-candles">
             <div class="candles-content animate-on-scroll">
-                <p class="candles-instruction" id="candles-instruction">Tape sur le gâteau pour souffler tes bougies 🕯️</p>
-                <div class="candles-cake" id="candles-cake">
-                    <div class="candles-row" id="candles-row">
-                        <span class="candle-flame">🕯</span>
-                        <span class="candle-flame">🕯</span>
-                        <span class="candle-flame">🕯</span>
-                        <span class="candle-flame">🕯</span>
-                        <span class="candle-flame">🕯</span>
-                    </div>
-                    <div class="cake-big">🎂</div>
+                <p class="candles-instruction" id="candles-instruction">Tape sur le gâteau pour souffler tes bougies</p>
+                <div class="candles-cake-big" id="candles-cake">
+                    <svg class="icon-cake-big" viewBox="0 0 120 110">
+                        <!-- Flammes (s'éteignent au tap) -->
+                        <ellipse cx="30" cy="12" rx="5" ry="9" fill="url(#flameGrad2)" class="blow-flame"/>
+                        <ellipse cx="46" cy="12" rx="5" ry="9" fill="url(#flameGrad2)" class="blow-flame"/>
+                        <ellipse cx="60" cy="10" rx="5" ry="9" fill="url(#flameGrad2)" class="blow-flame"/>
+                        <ellipse cx="74" cy="12" rx="5" ry="9" fill="url(#flameGrad2)" class="blow-flame"/>
+                        <ellipse cx="90" cy="12" rx="5" ry="9" fill="url(#flameGrad2)" class="blow-flame"/>
+                        <!-- Bougies -->
+                        <rect x="28" y="18" width="4" height="16" rx="2" fill="#F0D78C"/>
+                        <rect x="44" y="18" width="4" height="16" rx="2" fill="#F4C2C2"/>
+                        <rect x="58" y="16" width="4" height="18" rx="2" fill="#F0D78C"/>
+                        <rect x="72" y="18" width="4" height="16" rx="2" fill="#F4C2C2"/>
+                        <rect x="88" y="18" width="4" height="16" rx="2" fill="#F0D78C"/>
+                        <!-- Gâteau 3 étages -->
+                        <rect x="20" y="34" width="80" height="22" rx="6" fill="#E8A0BF"/>
+                        <rect x="12" y="56" width="96" height="22" rx="6" fill="#B8A9C9"/>
+                        <rect x="4" y="78" width="112" height="26" rx="8" fill="#967BB6"/>
+                        <!-- Décorations -->
+                        <line x1="24" y1="45" x2="96" y2="45" stroke="#F0D78C" stroke-width="2" stroke-dasharray="5 4" opacity="0.5"/>
+                        <line x1="16" y1="67" x2="104" y2="67" stroke="#F4C2C2" stroke-width="2" stroke-dasharray="5 4" opacity="0.4"/>
+                        <circle cx="30" cy="90" r="2.5" fill="#F0D78C" opacity="0.3"/>
+                        <circle cx="60" cy="88" r="3" fill="#F4C2C2" opacity="0.3"/>
+                        <circle cx="90" cy="90" r="2.5" fill="#F0D78C" opacity="0.3"/>
+                        <defs>
+                            <radialGradient id="flameGrad2" cx="50%" cy="80%" r="50%">
+                                <stop offset="0%" stop-color="#FFF8DC"/>
+                                <stop offset="40%" stop-color="#F0D78C"/>
+                                <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.5"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                    <div class="cake-glow"></div>
                 </div>
-                <p class="candles-wish hidden" id="candles-wish">Ton vœu va se réaliser... ✨</p>
+                <p class="candles-wish hidden" id="candles-wish">Ton voeu va se réaliser...</p>
             </div>
-            <!-- Canvas pour les feux d'artifice -->
             <canvas id="fireworks-canvas"></canvas>
         </section>
 
-        <!-- ─── Section 3 : Compteur de jours ─── -->
+        <!-- Section 3 : Compteur -->
         <section class="section section-counter" id="section-counter">
             <div class="counter-content animate-on-scroll">
                 <h2 class="section-title">Notre histoire d'amour</h2>
                 <p class="counter-subtitle">Ensemble depuis le <span id="couple-date-text">7 janvier 2024</span></p>
-                <div class="counter-grid" id="counter-grid">
-                    <div class="counter-card">
-                        <span class="counter-value" id="counter-days">0</span>
-                        <span class="counter-label">Jours</span>
-                    </div>
-                    <div class="counter-card">
-                        <span class="counter-value" id="counter-hours">0</span>
-                        <span class="counter-label">Heures</span>
-                    </div>
-                    <div class="counter-card">
-                        <span class="counter-value" id="counter-minutes">0</span>
-                        <span class="counter-label">Minutes</span>
-                    </div>
-                    <div class="counter-card">
-                        <span class="counter-value" id="counter-seconds">0</span>
-                        <span class="counter-label">Secondes</span>
-                    </div>
+                <div class="counter-grid">
+                    <div class="counter-card"><span class="counter-value" id="counter-days">0</span><span class="counter-label">Jours</span></div>
+                    <div class="counter-card"><span class="counter-value" id="counter-hours">0</span><span class="counter-label">Heures</span></div>
+                    <div class="counter-card"><span class="counter-value" id="counter-minutes">0</span><span class="counter-label">Minutes</span></div>
+                    <div class="counter-card"><span class="counter-value" id="counter-seconds">0</span><span class="counter-label">Secondes</span></div>
                 </div>
-                <p class="counter-footer">...et chaque seconde compte 💜</p>
+                <p class="counter-footer">...et chaque seconde compte</p>
             </div>
         </section>
 
-        <!-- ─── Section 4 : Raisons je t'aime ─── -->
+        <!-- Section 4 : Raisons -->
         <section class="section section-reasons" id="section-reasons">
             <div class="reasons-content animate-on-scroll">
                 <h2 class="section-title">Pourquoi je t'aime</h2>
-                <p class="reasons-subtitle">Tape sur chaque carte pour découvrir 💜</p>
-                <div class="reasons-grid" id="reasons-grid">
-                    <!-- Générées par JS -->
-                </div>
+                <div class="reasons-grid" id="reasons-grid"></div>
             </div>
         </section>
 
-        <!-- ─── Section 5 : Diaporama photos ─── -->
+        <!-- Section 5 : Photos -->
         <section class="section section-photos" id="section-photos">
             <div class="photos-content animate-on-scroll">
                 <h2 class="section-title">Nos plus beaux moments</h2>
                 <div class="slideshow-container" id="slideshow-container">
-                    <div class="slideshow-track" id="slideshow-track">
-                        <!-- Slides générées par JS -->
-                    </div>
-                    <button class="slide-btn slide-btn-prev" id="slide-prev" aria-label="Photo précédente">❮</button>
-                    <button class="slide-btn slide-btn-next" id="slide-next" aria-label="Photo suivante">❯</button>
+                    <div class="slideshow-track" id="slideshow-track"></div>
+                    <button class="slide-btn slide-btn-prev" id="slide-prev" aria-label="Précédent">
+                        <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+                    </button>
+                    <button class="slide-btn slide-btn-next" id="slide-next" aria-label="Suivant">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+                    </button>
                 </div>
                 <div class="slideshow-dots" id="slideshow-dots"></div>
             </div>
         </section>
 
-        <!-- ─── Overlay fullscreen photo ─── -->
+        <!-- Photo overlay -->
         <div class="photo-overlay hidden" id="photo-overlay">
-            <img class="photo-overlay-img" id="photo-overlay-img" src="" alt="Photo plein écran">
-            <button class="photo-overlay-close" id="photo-overlay-close" aria-label="Fermer">✕</button>
+            <img class="photo-overlay-img" id="photo-overlay-img" src="" alt="">
+            <button class="photo-overlay-close" id="photo-overlay-close" aria-label="Fermer">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
         </div>
 
-        <!-- ─── Section 6 : Message final ─── -->
+        <!-- Section 6 : Message -->
         <section class="section section-message" id="section-message">
             <div class="message-content animate-on-scroll">
                 <div class="message-card">
                     <h2 class="message-title">Pour toi, mon amour...</h2>
-                    <div class="message-body" id="message-body">
-                        <!-- Le message est tapé par l'effet machine à écrire -->
-                    </div>
+                    <div class="message-body" id="message-body"></div>
                     <span class="typewriter-cursor" id="typewriter-cursor"></span>
-                    <p class="message-signature hidden" id="message-signature">Avec tout mon amour ❤️</p>
+                    <p class="message-signature hidden" id="message-signature">
+                        Avec tout mon amour
+                        <svg class="icon-heart sig-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- ─── Section 7 : Rejouer ─── -->
+        <!-- Section 7 : Fin -->
         <section class="section section-replay" id="section-replay">
             <div class="replay-content animate-on-scroll">
-                <p class="replay-text">Je t'aime plus que tous les mots de cette page 💜</p>
+                <p class="replay-text">Je t'aime plus que tous les mots de cette page</p>
+                <svg class="icon-heart replay-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 <button class="replay-btn" id="replay-btn">
-                    <span>Revivre la magie ✨</span>
+                    <span>Revivre la magie</span>
+                    <svg class="icon-sparkle" viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>
                 </button>
             </div>
         </section>
-
     </main>
 
-    <!-- Audio -->
     <audio id="bg-music" loop preload="auto">
         <source src="music/song.mp3" type="audio/mpeg">
     </audio>
